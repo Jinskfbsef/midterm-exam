@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
+
+@Slf4j
 public class ProductService {
 
 	// ProductMapper 객체 주입
-	ProductMapper productMapper;
-	public ProductMapper
 
 	public Map<String, Object> getProductList() {
 
@@ -61,7 +61,7 @@ public class ProductService {
 			int firstPageNum = 1; // 항상 1
 			
 			// 전체 페이지 수 계산(lastPageNum)
-			int lastPageNum = // 작성
+			int lastPageNum = (int) Math.ceilDiv((double) totalCount/pageSize);// 작성
 
 			// 페이지 블록 범위 계산
 			int startBlockPage = 1;

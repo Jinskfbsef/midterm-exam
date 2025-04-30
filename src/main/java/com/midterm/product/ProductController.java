@@ -9,17 +9,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import lombok.extern.slf4j.Slf4j;
 
+@Controller
+@RequestMapping("/product")
+@Slf4j
 public class ProductController {
 
 	// ProductService 객체 주입
+	ProductService productService;
+	public ProductController(ProductService productService) {
+		this.productService = productService;
+	}
 	
 	// 상품 목록 조회 
+	@RequestMapping(value="/list", method)
 	public ModelAndView getProductList() {
 		ModelAndView mv = new ModelAndView();
+		log.info("list controller");
+		Map<String, Object> result=productService.getProductList();
 		
+		mv.addObject("result",result);
 		return mv;
 	}
 	
